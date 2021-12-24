@@ -7,6 +7,7 @@ const result_p = document.querySelector('.result > p');
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissor_div = document.getElementById("s");
+const reset_button = document.querySelector('.reset > button');
 const subUser = "You".fontsize(3).sub();
 const subComp = "Comp".fontsize(3).sub();
 
@@ -58,7 +59,7 @@ function win(user, computer) {
     result_p.innerHTML = `${convertToWords(user)}${subUser} beats ${convertToWords(computer)}${subComp}. You Win!`;
     // transition for .green-glow
     document.getElementById(user).classList.add('green-glow');
-    setTimeout( function() {document.getElementById(user).classList.remove('green-glow')}, 300);
+    setTimeout( () => {document.getElementById(user).classList.remove('green-glow')}, 300);
 }
 
 function lose(user, computer) {
@@ -79,18 +80,23 @@ function tie(user, computer) {
     
 }
 
+
 // main() function
 function main() {
-    rock_div.addEventListener('click', function() {
+    rock_div.addEventListener('click', () => {
         game("r");
     })
 
-    paper_div.addEventListener('click', function() {
+    paper_div.addEventListener('click', () => {
         game("p");
     })
 
-    scissor_div.addEventListener('click', function() {
+    scissor_div.addEventListener('click', () => {
         game("s");
+
+    reset_button.addEventListener('click', () => {
+        location.reload();
+    })
 })
 
 }
